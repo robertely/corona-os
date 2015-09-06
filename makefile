@@ -21,6 +21,10 @@ configure:
 
 overlay:
 	rsync -av root_overlay/ buildroot
+	
+install_extras:
+	chroot buildroot apt-get update
+	chroot buildroot apt-get install -y htop vim tree git raspi-config 
 burn:
 	./burn.sh
 
