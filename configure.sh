@@ -1,27 +1,34 @@
 #/bin/sh
 
-#######################################
-# Set Hostname                        #
-#######################################
+echo '#######################################'
+echo '# Set Hostname                        #'
+echo '#######################################'
 echo "jessie" > /etc/hostname
 
-#######################################
-# Set Timezone                        #
-#######################################
+echo '#######################################'
+echo '# Set root password                   #'
+echo '#######################################'
+
+passwd 
+
+
+echo '#######################################'
+echo '# Set Timezone                        #'
+echo '#######################################'
 echo "Etc/UTC" >/etc/timezone 
 ln -sf /usr/share/zoneinfo/US/Eastern /etc/localtime
 
-#######################################
-# Setup fstab                         #
-#######################################
+echo '#######################################'
+echo '# Setup fstab                         #'
+echo '#######################################'
 cat > /etc/fstab << EOF
 /dev/mmcblk0p1 /boot vfat noatime 0 2
 /dev/mmcblk0p2 / ext4 noatime 0 1
 EOF
 
-#######################################
-# Setup basic networking              #
-#######################################
+echo '#######################################'
+echo '# Setup basic networking              #'
+echo '#######################################'
 cat > /etc/network/interfaces.d/eth0 << EOF
 auto lo
 iface lo inet loopback
@@ -36,9 +43,9 @@ iface wlan0 inet manual
 wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
 EOF
 
-#######################################
-# Setup Apt                           #
-#######################################
+echo '#######################################'
+echo '# Setup Apt                           #'
+echo '#######################################'
 cat > /etc/apt/sources.list << EOF
 deb http://ftp.de.debian.org/debian jessie main contrib non-free
 deb http://ftp.de.debian.org/debian jessie-updates main contrib non-free
@@ -66,12 +73,14 @@ Pin: origin archive.raspberrypi.org
 Pin-Priority: 1000
 EOF
 
-#######################################
-# Install supplements                 #
-#######################################
+echo '#######################################'
+echo '# Install supplements                 #'
+echo '#######################################'
 apt update
 apt upgrade -y
 apt install -y \
+    dhcpcd5 \
+    resolvconf \
     locales \
     dbus \
     openssh-server \
@@ -84,9 +93,9 @@ locale-gen --purge en_US.UTF-8
 echo -e 'LANG="en_US.UTF-8"\nLANGUAGE="en_US:en"\n' > /etc/default/locale
 
 
-#######################################
-# Setup SSH                           #
-#######################################
+echo '#######################################'
+echo '# Setup SSH                           #'
+echo '#######################################'
 sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
 
 cat > /etc/systemd/system/sshdgenkeys.service << EOF
@@ -116,11 +125,14 @@ EOF
 mkdir /etc/systemd/system/ssh.service.wants
 ln -s /etc/systemd/system/sshdgenkeys.service /etc/systemd/system/ssh.service.wants
 
-# Setup Clocks
+
+echo '#######################################'
+echo '# Setup Clocks                        #'
+echo '#######################################'
 systemctl enable systemd-timesyncd
 systemctl disable hwclock-save
 
 
-echo 'setup complete'
+echo 'Setup complete...'
 
 

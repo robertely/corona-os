@@ -7,6 +7,10 @@ device="/dev/sda"
 bootsize="64M"
 rootsize="1G"
 
+deps:
+	apt-get update
+	apt-get install debootstrap device-tree-compiler
+
 build:
 	debootstrap jessie buildroot
 
