@@ -15,6 +15,8 @@ configure:
 	chroot buildroot ./configure.sh
 	rm buildroot/configure.sh
 
+overlay:
+	rsync -av root_overlay/ buildroot
 burn:
 	./burn.sh
 

@@ -70,8 +70,8 @@ EOF
 # Install supplements                 #
 #######################################
 apt update
-apt upgrade
-apt install \
+apt upgrade -y
+apt install -y \
     locales \
     dbus \
     openssh-server \
