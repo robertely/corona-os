@@ -45,9 +45,7 @@ rsync -av --exclude=/etc/ssh/*_key* \
 touch /mnt/system/var/log/lastlog
 touch /mnt/system/etc/machine-id
 
-
-# /boot/dt-blob.bin /mnt/boot/
-# /boot/config.txt /mnt/boot/
+sync
 
 umount /mnt/boot
 umount /mnt/system

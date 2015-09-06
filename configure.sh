@@ -84,19 +84,6 @@ locale-gen --purge en_US.UTF-8
 echo -e 'LANG="en_US.UTF-8"\nLANGUAGE="en_US:en"\n' > /etc/default/locale
 
 
-##
-# Setup Wifi
-##
-cat > /etc/wpa_supplicant/wpa_supplicant.conf << EOF
-ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
-update_config=1
-network={
-  ssid="Henry"
-  psk="REDACTED"
-}
-EOF
-
-
 #######################################
 # Setup SSH                           #
 #######################################
