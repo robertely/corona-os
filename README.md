@@ -1,0 +1,3 @@
+# corona-os
+
+First stab at debootstrap, it sort of works...
