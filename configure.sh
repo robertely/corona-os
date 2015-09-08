@@ -86,7 +86,8 @@ apt install -y \
     openssh-server \
     dosfstools \
     libraspberrypi-bin \
-    wpasupplicant 
+    wpasupplicant \
+    rpi-update 
 apt-get clean
 
 locale-gen --purge en_US.UTF-8
@@ -127,11 +128,16 @@ ln -s /etc/systemd/system/sshdgenkeys.service /etc/systemd/system/ssh.service.wa
 
 
 echo '#######################################'
+echo '# Updating boot partiton ("firmware") #'
+echo '#######################################'
+
+rpi-update
+
+echo '#######################################'
 echo '# Setup Clocks                        #'
 echo '#######################################'
 systemctl enable systemd-timesyncd
 systemctl disable hwclock-save
-
 
 echo 'Setup complete...'
 

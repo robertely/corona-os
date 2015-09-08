@@ -16,18 +16,19 @@ dpi_group=2
 dpi_mode=87 # Hdmi CVT
 display_default_lcd=1
 
+#Adadruit generic thing
 #dpi_output_format=458773
 #hdmi_timings=800 1 0 48 0 480 0 13 3 32 0 0 0 60 0 23040000 6
 
+#Newhaven 4.3
 dpi_output_format=458773
 hdmi_timings=800 1 40 48 88 480 0 13 3 32 0 0 0 60 0 23040000 6
 
-gpu_mem_256=128
-gpu_mem_512=256
-gpu_mem_1024=256
-overscan_scale=1
-gpu_mem=128
-arm_freq=900
-core_freq=250
-sdram_freq=450
+arm_freq=1000
+sdram_freq=500
+core_freq=500
 over_voltage=2
+temp_limit=80
+
+initial_turbo = 30
+gpu_mem = 16
