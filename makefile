@@ -7,7 +7,8 @@ rootsize="1G"
 
 deps:
 	apt-get update
-	apt-get install debootstrap device-tree-compiler
+	apt-get install debootstrap device-tree-compiler rpi-update
+	rpi-update
 base:
 	debootstrap jessie buildroot
 configure:
@@ -16,9 +17,9 @@ configure:
 	rm buildroot/configure.sh
 extras:
 	chroot buildroot apt-get update
-	chroot buildroot apt-get install -y htop vim tree git raspi-config raspi-update npm
-	chroot npm install -g electron-prebuilt react-tools
-	chroot npm install -g react-tools
+	chroot buildroot apt-get install -y htop vim tree git raspi-config rpi-update raspi-config
+#	chroot npm install -g electron-prebuilt react-tools
+#	chroot npm install -g react-tools
 
 overlay:
 	rsync -av root_overlay/ buildroot

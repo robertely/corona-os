@@ -47,8 +47,8 @@ echo '#######################################'
 echo '# Setup Apt                           #'
 echo '#######################################'
 cat > /etc/apt/sources.list << EOF
-deb http://ftp.de.debian.org/debian jessie main contrib non-free
-deb http://ftp.de.debian.org/debian jessie-updates main contrib non-free
+deb http://ftp.debian.org/debian jessie main contrib non-free
+deb http://ftp.debian.org/debian jessie-updates main contrib non-free
 deb http://security.debian.org jessie/updates main contrib non-free
 deb http://archive.raspberrypi.org/debian wheezy main
 EOF
@@ -127,12 +127,12 @@ mkdir /etc/systemd/system/ssh.service.wants
 ln -s /etc/systemd/system/sshdgenkeys.service /etc/systemd/system/ssh.service.wants
 
 
-echo '#######################################'
-echo '# Updating boot partiton ("firmware") #'
-echo '#######################################'
+# echo '#######################################'
+# echo '# Updating boot partiton ("firmware") #'
+# echo '#######################################'
 
 # Pin firmware and kernal because of reasons.
-sudo rpi-update 03b44377dd1f410900d93ca92d39cdacba3544ac
+# sudo rpi-update 03b44377dd1f410900d93ca92d39cdacba3544ac
 
 echo '#######################################'
 echo '# Setup Clocks                        #'
