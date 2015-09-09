@@ -131,7 +131,8 @@ echo '#######################################'
 echo '# Updating boot partiton ("firmware") #'
 echo '#######################################'
 
-rpi-update
+# Pin firmware and kernal because of reasons.
+sudo rpi-update 03b44377dd1f410900d93ca92d39cdacba3544ac
 
 echo '#######################################'
 echo '# Setup Clocks                        #'
