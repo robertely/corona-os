@@ -18,8 +18,10 @@ configure:
 extras:
 	chroot buildroot apt-get update
 	chroot buildroot apt-get install -y htop vim tree git raspi-config rpi-update raspi-config
-#	chroot npm install -g electron-prebuilt react-tools
-#	chroot npm install -g react-tools
+
+electron:
+	chroot buildroot apt-get install libgtk2.0-0 libnotify4 libgconf2-4 libnss3 npm
+	chroot buildroot npm install -g react-tools
 
 overlay:
 	rsync -av root_overlay/ buildroot
