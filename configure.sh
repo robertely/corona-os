@@ -87,6 +87,7 @@ apt install -y \
     dosfstools \
     libraspberrypi-bin \
     wpasupplicant \
+    crda \
     rpi-update 
 apt-get clean
 
