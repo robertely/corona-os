@@ -1,2 +1,2 @@
-buildroot
+build_root
 root_overlay/etc/wpa_supplicant/wpa_supplicant.conf
