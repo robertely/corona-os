@@ -141,6 +141,12 @@ echo '#######################################'
 systemctl enable systemd-timesyncd
 systemctl disable hwclock-save
 
+echo '#######################################'
+echo '# Setup Pi user                       #'
+echo '#######################################'
+sudo adduser pi --gecos "Raspberry Pi" --disabled-password
+echo "pi:raspberry" | sudo chpasswd
+
 echo 'Setup complete...'
 
 
